@@ -1,0 +1,83 @@
+﻿Switch 0:
+
+
+en
+config t
+vlan 10
+name ICT
+exit
+vlan 20
+name CSE
+exit
+interface FastEthernet 3/1
+switchport mode trunk
+exit
+interface FastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+interface FastEthernet 1/1
+switchport mode access
+switchport access vlan 20
+exit
+
+
+
+
+
+
+
+
+
+
+
+
+Switch 1: 
+
+
+en
+config t
+vlan 10
+name ICT
+exit
+vlan 20
+name CSE
+exit
+interface FastEthernet 3/1
+switchport mode trunk
+exit
+interface FastEthernet 2/1
+switchport mode access
+switchport access vlan 10
+exit
+interface FastEthernet 1/1
+switchport access vlan 20
+exit
+
+
+Switch 1 to Router
+
+
+interface FastEthernet 0/1
+switchport mode trunk
+exit
+
+
+Router (Router 1):
+
+
+en
+config t
+interface GigabitEthernet 0/0
+no shutdown
+exit
+interface GigabitEthernet 0/0.10
+encapsulation dot1Q 10
+ip address 192.168.1.254 255.255.255.0
+no shutdown
+exit
+interface GigabitEthernet 0/0.20
+encapsulation dot1Q 20
+ip address 192.168.2.254 255.255.255.0
+no shutdown
+exit
