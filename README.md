@@ -238,7 +238,7 @@ erDiagram
     Category ||--o{ SubCategory : "has"
     Category }o--o{ Brand : "links"
     SubCategory ||--o{ Product : "groups"
-    Brand |o--o{ Product : "brands"
+    Brand ||--o{ Product : "brands"
 
     Product ||--o{ ProductVariant : "variants"
     Product ||--o{ ProductImage : "images"
@@ -254,7 +254,7 @@ erDiagram
     Order ||--o{ OrderStatusHistory : "history"
     Order ||--o| CouponRedemption : "coupon"
     Coupon ||--o{ CouponRedemption : "redemptions"
-    ProductVariant |o--o{ OrderItem : "ordered"
+    ProductVariant ||--o{ OrderItem : "ordered"
     OrderItem ||--o| Review : "reviewed"
 ```
 
@@ -271,8 +271,9 @@ erDiagram
     SellerProfile ||--o{ MarketplaceCommission : "commission"
 
     Order ||--o{ SellerOrder : "splits_into"
-    SellerOrder |o--o{ OrderItem : "groups"
+    SellerOrder ||--o{ OrderItem : "groups"
     SellerOrder ||--o| Shipment : "shipped_via"
     SellerOrder ||--o{ SellerOrderStatusHistory : "history"
     SellerSettlement }o--o{ SellerOrder : "settles"
 ```
+
